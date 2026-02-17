@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fallin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            animation: arcEnCiel 10s linear infinite;
+        }
+
+        .falling-image {
+            position: absolute;
+            top: -100px;
+            
+            pointer-events: none;
+            
+            z-index: 1000;
+            
+            animation: fall linear forwards;
+        }
+
+        @keyframes arcEnCiel {
+            0% {
+                background-color: #ff0000;
+            }
+
+            
+            8% {
+                background-color: #ff8000;
+            }
+
+            
+            17% {
+                background-color: #ffff00;
+            }
+
+            
+            25% {
+                background-color: #00ff00;
+            }
+
+            
+            33% {
+                background-color: #0000ff;
+            }
+
+            
+            41% {
+                background-color: #4b0082;
+            }
+
+            
+            50% {
+                background-color: #ff0000;
+            }
+
+            
+            58% {
+                background-color: #ff8000;
+            }
+
+            
+            67% {
+                background-color: #ffff00;
+            }
+
+            
+            75% {
+                background-color: #00ff00;
+            }
+
+            
+            83% {
+                background-color: #0000ff;
+            }
+
+            
+            92% {
+                background-color: #4b0082;
+            }
+
+            
+            100% {
+                background-color: #ff0000;
+            }
+
+            
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) translateX(-110vh) rotate(var(--scale-y)) scaleY(-1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function createFallingImage() {
+            const img = document.createElement('img');
+            img.src = 'pet.gif'; 
+            img.classList.add('falling-image');
+
+            
+            
+			const randomScale = Math.floor(Math.random() * 720) - 360;
+			img.style.setProperty('--scale-y', randomScale + "deg");
+			
+            
+            img.style.left = Math.random() * 300 + "vh";
+            
+            
+            const size = Math.random() * (200 - 30) + 30;
+            img.style.width = size + "px";
+            
+            
+            const duration = Math.random() * (3 - 1) + 1;
+            img.style.animationDuration = duration + "s";
+            
+            
+            img.style.opacity = Math.random() * (1 - 0.4) + 0.4;
+
+            document.body.appendChild(img);
+
+            
+            setTimeout(() => {
+                img.remove();
+            }, duration * 1000);
+        }
+
+        
+        const fallin = setInterval(createFallingImage, 20);
+    </script>
+</body>
+
+</html>
